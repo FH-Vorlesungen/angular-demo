@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {AsyncPipe} from '@angular/common';
+import {OAuthService} from "angular-oauth2-oidc";
+import {authCodeFlowConfig} from "./auth/auth.config";
 
 @Component({
   selector: 'app-root',
@@ -10,5 +12,12 @@ import {AsyncPipe} from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+  private oauthService = inject(OAuthService)
+  constructor() {
+    this.oauthService.configure(authCodeFlowConfig);
+    this.oauthService.initLoginFlow();
+    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  }
 
 }

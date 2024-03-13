@@ -7,7 +7,6 @@ server.issuer.keys.generate('RS256').then((issuer: any) => {
   console.log(issuer)
 // Start the server
   server.start(8081, 'localhost').then((start: any) => {
-    console.log(start)
     console.log('Issuer URL:', server.issuer.url);
   });
 });
