@@ -1,0 +1,26 @@
+<h1>HTTP DEMO</h1>
+<h2>Demo Data</h2>
+@if (demoData$|async; as demoData) {
+  @for (entry of demoData;track entry.id) {
+    <h3>{{entry.title}}</h3>
+  }
+} @else {
+  No Data found
+}
+<h2>Demo Related Data</h2>
+@if (demoRelatedData$|async; as demoRelated) {
+  @for (entry of demoRelated;track entry.id) {
+    <h3>{{entry.text}}</h3>
+  }
+} @else {
+  No Data found
+}
+<h2>Combined by Id</h2>
+@if (combined$|async; as combined) {
+  @for (entry of combined;track entry?.id) {
+    <h3>{{entry?.title}}</h3>
+    <h3>{{entry?.text}}</h3>
+  }
+} @else {
+  No Data found
+}

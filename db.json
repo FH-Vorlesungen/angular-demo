@@ -1,0 +1,33 @@
+{
+  "demo-data": [
+    {
+      "id": 1,
+      "title": "Demo 1"
+    },
+    {
+      "id": 2,
+      "title": "Demo 2"
+    },
+    {
+      "id": 3,
+      "title": "Demo 3"
+    }
+  ],
+  "demo-related": [
+    {
+      "id": "1",
+      "text": "asdf",
+      "demoId": 1
+    },
+    {
+      "id": "2",
+      "text": "sdfg",
+      "demoId": 2
+    },
+    {
+      "id": "3",
+      "text": "dfgh",
+      "demoId": 3
+    }
+  ]
+}
