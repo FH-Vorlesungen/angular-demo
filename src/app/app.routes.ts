@@ -21,4 +21,11 @@ export const routes: Routes = [
     path: 'http-demo',
     component: HttpDemoLandingComponent
   },
+  {
+    path: 'routing',
+    loadComponent: () => import('./routing-basics/routing-landing/routing-landing.component').then(c => c.RoutingLandingComponent),
+    data: {
+      id: 123
+    }
+  },
 ];
