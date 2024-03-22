@@ -1,0 +1,51 @@
+<form (ngSubmit)="whenSubmit()">
+  <div class="container">
+    <h1>Add your animal</h1>
+    <label for="race">Race</label>
+    <input [(ngModel)]="model.race" id="race" name="race" #race="ngModel" [required]="true">
+    <label for="name">Name</label>
+    <input [(ngModel)]="model.name" id="name" name="name" placeholder="Animal name" #name="ngModel" [required]="true" [min]="4" appForbiddenName="mario">
+    <label for="age">Age</label>
+    <input [(ngModel)]="model.age" id="age" name="age" [min]="0" type="number" #age="ngModel" [required]="true">
+    <button [disabled]="!race.touched || !age.touched ||!name.touched || race.invalid || age.invalid || name.invalid">
+      ADD
+    </button>
+  </div>
+</form>
+Current Input:{{ model|json }}
+<br>
+Animals:{{ animals|json }}
+@if (name.invalid && (name.dirty || name.touched)) {
+  <div class="alert">
+    @if (name.errors?.['required']) {
+      <div>Name is required.</div>
+    }
+    @if (name.errors?.['min']) {
+      <div>
+        Name must be at least 4 characters long.
+      </div>
+    }
+    @if (name.errors?.['forbiddenName']) {
+      <div>
+        Name cannot be Mario.
+      </div>
+    }
+  </div>
+}
+@if (age.invalid && (age.dirty || age.touched)) {
+  <div class="alert">
+    @if (age.errors?.['required']) {
+      <div>Age is required.</div>
+    }
+    @if (age.errors?.['min']) {
+      <div>
+        Name must be at least 4 characters long.
+      </div>
+    }
+    @if (age.errors?.['forbiddenName']) {
+      <div>
+        Name cannot be Bob.
+      </div>
+    }
+  </div>
+}

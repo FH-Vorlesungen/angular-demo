@@ -1,0 +1,34 @@
+<div [formGroup]="animalGroup">
+  <div class="container">
+    <h1>Add your animal</h1>
+    <label for="race">Race</label>
+    <input formControlName="race" id="race" name="race">
+    <label for="name">Name</label>
+    <input formControlName="name" id="name" name="name" placeholder="Animal name" [required]="true">
+    <label for="age">Age</label>
+    <input formControlName="age" id="age" name="age" [min]="0" type="number" [required]="true">
+    <button (click)="whenSubmit()" [disabled]="!animalGroup.touched || animalGroup.invalid">
+      ADD
+    </button>
+  </div>
+</div>
+Current Input:{{ animalGroup.value|json }}
+<br>
+Animals:{{ animals$|async|json }}
+@if ((animalGroup.touched || animalGroup.dirty) && animalGroup.invalid) {
+  <div class="alert">
+    @if (animalGroup.errors?.['required']) {
+      <div>Name is required.</div>
+    }
+    @if (animalGroup.errors?.['min']) {
+      <div>
+        Name must be at least 4 characters long.
+      </div>
+    }
+    @if (animalGroup.errors?.['forbiddenName']) {
+      <div>
+        Name cannot be Mario.
+      </div>
+    }
+  </div>
+}

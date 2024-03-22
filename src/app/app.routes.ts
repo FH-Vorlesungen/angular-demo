@@ -28,4 +28,22 @@ export const routes: Routes = [
       id: 123
     }
   },
+  {
+    path: 'forms',
+    loadComponent: () => import('./forms/form-landing/form-landing.component').then(c => c.FormLandingComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./forms/form-landing/template-driven-form-example/template-driven-form-example.component').then(c => c.TemplateDrivenFormExampleComponent),
+      },
+      {
+        path: 'template-driven',
+        loadComponent: () => import('./forms/form-landing/template-driven-form-example/template-driven-form-example.component').then(c => c.TemplateDrivenFormExampleComponent),
+      },
+      {
+        path: 'reactive',
+        loadComponent: () => import('./forms/form-landing/reactive-form-example/reactive-form-example.component').then(c => c.ReactiveFormExampleComponent),
+      }
+    ]
+  }
 ];
