@@ -3,6 +3,7 @@ import {ServiceBasicsLandingComponent} from './service-basics/service-basics-lan
 import {WelcomeComponent} from './welcome/welcome.component';
 import {HooksLandingComponent} from './hooks-landing/hooks-landing.component';
 import {HttpDemoLandingComponent} from './http-demo-landing/http-demo-landing.component';
+import {dummyGuard} from "./dummy.guard";
 
 export const routes: Routes = [
   {
@@ -19,11 +20,13 @@ export const routes: Routes = [
   },
   {
     path: 'http-demo',
-    component: HttpDemoLandingComponent
+    component: HttpDemoLandingComponent,
+    canActivate: [() => false],
   },
   {
     path: 'routing',
     loadComponent: () => import('./routing-basics/routing-landing/routing-landing.component').then(c => c.RoutingLandingComponent),
+    canActivate: [dummyGuard()],
     data: {
       id: 123
     }
