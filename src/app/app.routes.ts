@@ -21,12 +21,12 @@ export const routes: Routes = [
   {
     path: 'http-demo',
     component: HttpDemoLandingComponent,
-    canActivate: [() => false],
+    // canActivate: [() => false],
   },
   {
     path: 'routing',
     loadComponent: () => import('./routing-basics/routing-landing/routing-landing.component').then(c => c.RoutingLandingComponent),
-    canActivate: [dummyGuard()],
+    // canActivate: [dummyGuard()],
     data: {
       id: 123
     }
